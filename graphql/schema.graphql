@@ -1,0 +1,62 @@
+type Art_Tracklist_Contributors{
+    id:Int!
+    name:String!
+    picture_medium:String!
+    tracklist:String!
+ }
+type Art_Tracklist_Artist{
+    id:Int!
+    name:String!
+    tracklist:String
+    type:String
+ }
+type Art_Tracklist_Album{
+    id:Int!
+    title:String
+    cover_medium:String
+    tracklist:String
+    type:String
+}
+type Art_Tracklist{
+    id:Int!
+    contributors:[Art_Tracklist_Contributors]
+    artist:Art_Tracklist_Artist
+    album:Art_Tracklist_Album
+}
+type Artist{
+    id:Int!
+    picture_medium:String!
+    tracklist:String!
+    type:String!
+}
+
+type Alb_Tracklist_Artist{
+    id:Int!
+    name:String
+    tracklist:String
+    type:String
+}
+type Alb_Tracklist{
+    id:Int!
+    title:String
+    preview:String
+    artist:Alb_Tracklist_Artist
+}
+type Album{
+    id:Int!
+    cover_medium:String!
+    tracklist:String!
+    type:String!
+}
+type List {
+    id:Int!
+    preview:String
+    artist:Artist
+    album:Album
+}
+
+type Query{
+    search(request:String!):[List]!
+    # search_Album(request:String!):[Alb_Tracklist]
+    # search_Artist(request:String!):[Art_Tracklist]
+}
